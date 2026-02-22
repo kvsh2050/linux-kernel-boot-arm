@@ -299,6 +299,6 @@ Use this section to mention useful resources and libraries that you have used in
  - [Readme Template](https://github.com/othneildrew/Best-README-Template)
 
 
-## :gen: Template Credit
+## :handshake: Template Credit
 
 Source of this Template : [https://github.com/Louis3797/awesome-readme-template](https://github.com/Louis3797/awesome-readme-template)
