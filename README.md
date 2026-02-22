@@ -286,7 +286,6 @@ Distributed under the no License. See LICENSE.txt for more information.
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
 
-Project Link: [https://github.com/Louis3797/awesome-readme-template](https://github.com/Louis3797/awesome-readme-template)
 
 
 <!-- Acknowledgments -->
@@ -299,3 +298,7 @@ Use this section to mention useful resources and libraries that you have used in
  - [Emoji Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md#travel--places)
  - [Readme Template](https://github.com/othneildrew/Best-README-Template)
 
+
+## :gen: Template 
+
+Source of this Template : [https://github.com/Louis3797/awesome-readme-template](https://github.com/Louis3797/awesome-readme-template)
