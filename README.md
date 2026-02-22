@@ -4,10 +4,71 @@
   <h1>Linux Kernel Scratch</h1>
   
   <p>
-    An awesome README template for your projects! 
+    Linux Kernel Booting and adding functionality 
   </p>
   
   
+
+# ARM64 Kernel and BusyBox Build Script
+
+### 1. Install Dependencies
+sudo apt update -y && sudo apt install -y \
+  zsh git gcc flex bison make ca-certificates curl \
+  gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu \
+  libc6-dev-arm64-cross qemu-system-aarch64 qemu-user \
+  qemu-user-static bc libssl-dev libncurses-dev \
+  libncurses5-dev libncursesw5-dev bzip2 vim nano cpio \
+  device-tree-compiler
+
+### 2. Build Linux Kernel (v6.6)
+git clone --depth 1 --branch v6.6 https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+cd linux
+make ARCH=arm64 defconfig
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) Image dtbs
+cd ..
+
+### 3. Build BusyBox (Root FS)
+git clone --depth=1 https://git.busybox.net/busybox.git
+cd busybox
+make ARCH=arm64 defconfig
+# Note: You may want to set CONFIG_STATIC=y in .config for a standalone initramfs
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc)
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- install
+
+### 4. Create Initramfs
+cd _install
+cat > init <<'EOF'
+#!/bin/sh
+# Simple init: print a message, drop to a shell
+echo "Hello welcome to the linux kernel, this is initramfs!" > /dev/console
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin
+# Spawn an interactive shell
+exec /bin/sh
+EOF
+
+chmod +x init
+find . -print0 | cpio --null -ov --format=newc > ../../initramfs.cpio
+cd ../..
+
+### 5. Run in QEMU
+qemu-system-aarch64 \
+ -machine virt \
+ -cpu cortex-a57 \
+ -nographic \
+ -kernel linux/arch/arm64/boot/Image \
+ -initrd initramfs.cpio
+
+### 6. Extract Device Tree (Optional)
+qemu-system-aarch64 -machine virt -machine dumpdtb=qemu.dtb
+dtc -I dtb qemu.dtb > qemu.dts
+
+
+
+
+
+
+
+
 <!-- Badges -->
 <p>
   <a href="https://github.com/Louis3797/awesome-readme-template/graphs/contributors">
