@@ -1,45 +1,42 @@
 <div align="center">
-
   <img src="assets/logo.png" alt="logo" width="200" height="auto" />
   <h1>Linux Kernel Scratch</h1>
   
   <p>
-    Linux Kernel Booting and adding functionality 
+    Building and booting a Linux Kernel from scratch on ARM64 with BusyBox
   </p>
   
-
-
 <!-- Badges -->
 <p>
-  <a href="https://github.com/Louis3797/awesome-readme-template/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/Louis3797/awesome-readme-template" alt="contributors" />
+  <a href="https://github.com/kvsh2050/linux-kernel-scratch/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/kvsh2050/linux-kernel-scratch" alt="contributors" />
   </a>
   <a href="">
-    <img src="https://img.shields.io/github/last-commit/Louis3797/awesome-readme-template" alt="last update" />
+    <img src="https://img.shields.io/github/last-commit/kvsh2050/linux-kernel-scratch" alt="last update" />
   </a>
-  <a href="https://github.com/Louis3797/awesome-readme-template/network/members">
-    <img src="https://img.shields.io/github/forks/Louis3797/awesome-readme-template" alt="forks" />
+  <a href="https://github.com/kvsh2050/linux-kernel-scratch/network/members">
+    <img src="https://img.shields.io/github/forks/kvsh2050/linux-kernel-scratch" alt="forks" />
   </a>
-  <a href="https://github.com/Louis3797/awesome-readme-template/stargazers">
-    <img src="https://img.shields.io/github/stars/Louis3797/awesome-readme-template" alt="stars" />
+  <a href="https://github.com/kvsh2050/linux-kernel-scratch/stargazers">
+    <img src="https://img.shields.io/github/stars/kvsh2050/linux-kernel-scratch" alt="stars" />
   </a>
-  <a href="https://github.com/Louis3797/awesome-readme-template/issues/">
-    <img src="https://img.shields.io/github/issues/Louis3797/awesome-readme-template" alt="open issues" />
+  <a href="https://github.com/kvsh2050/linux-kernel-scratch/issues/">
+    <img src="https://img.shields.io/github/issues/kvsh2050/linux-kernel-scratch" alt="open issues" />
   </a>
-  <a href="https://github.com/Louis3797/awesome-readme-template/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/Louis3797/awesome-readme-template.svg" alt="license" />
+  <a href="https://github.com/kvsh2050/linux-kernel-scratch/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/kvsh2050/linux-kernel-scratch.svg" alt="license" />
   </a>
 </p>
    
 <h4>
-    <a href="https://github.com/Louis3797/awesome-readme-template/">View Demo</a>
+  <a href="https://github.com/kvsh2050/linux-kernel-scratch">View Demo</a>
   <span> · </span>
-    <a href="https://github.com/Louis3797/awesome-readme-template">Documentation</a>
+  <a href="https://github.com/kvsh2050/linux-kernel-scratch">Documentation</a>
   <span> · </span>
-    <a href="https://github.com/Louis3797/awesome-readme-template/issues/">Report Bug</a>
+  <a href="https://github.com/kvsh2050/linux-kernel-scratch/issues/">Report Bug</a>
   <span> · </span>
-    <a href="https://github.com/Louis3797/awesome-readme-template/issues/">Request Feature</a>
-  </h4>
+  <a href="https://github.com/kvsh2050/linux-kernel-scratch/issues/">Request Feature</a>
+</h4>
 </div>
 
 <br />
@@ -48,268 +45,40 @@
 # :notebook_with_decorative_cover: Table of Contents
 
 - [About the Project](#star2-about-the-project)
-  * [Screenshots](#camera-screenshots)
-  * [Tech Stack](#space_invader-tech-stack)
   * [Features](#dart-features)
-  * [Color Reference](#art-color-reference)
-  * [Environment Variables](#key-environment-variables)
 - [Getting Started](#toolbox-getting-started)
   * [Prerequisites](#bangbang-prerequisites)
-  * [Installation](#gear-installation)
-  * [Running Tests](#test_tube-running-tests)
-  * [Run Locally](#running-run-locally)
-  * [Deployment](#triangular_flag_on_post-deployment)
-- [Usage](#eyes-usage)
-- [Roadmap](#compass-roadmap)
-- [Contributing](#wave-contributing)
-  * [Code of Conduct](#scroll-code-of-conduct)
-- [FAQ](#grey_question-faq)
-- [License](#warning-license)
+  * [Build the Kernel](#gear-build-the-kernel)
+  * [Build BusyBox Root FS](#package-build-busybox-root-fs)
+  * [Create Initramfs](#wrench-create-initramfs)
+  * [Run in QEMU](#rocket-run-in-qemu)
+  * [Extract Device Tree](#deciduous_tree-extract-device-tree-optional)
 - [Contact](#handshake-contact)
 - [Acknowledgements](#gem-acknowledgements)
 
-  
 
 <!-- About the Project -->
 ## :star2: About the Project
 
+A step-by-step guide and build scripts for compiling a **Linux Kernel v6.6** from source for **ARM64 (Cortex-A)**, building a minimal **BusyBox** root filesystem, packaging it as an **initramfs**, and booting the whole thing inside **QEMU** — no physical hardware required.
 
-<!-- Screenshots -->
-### :camera: Screenshots
-
-<div align="center"> 
-  <img src="https://placehold.co/600x400?text=Your+Screenshot+here" alt="screenshot" />
-</div>
-
-
-<!-- TechStack -->
-### :space_invader: Tech Stack
-
-<details>
-  <summary>Client</summary>
-  <ul>
-    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
-    <li><a href="https://nextjs.org/">Next.js</a></li>
-    <li><a href="https://reactjs.org/">React.js</a></li>
-    <li><a href="https://tailwindcss.com/">TailwindCSS</a></li>
-  </ul>
-</details>
-
-<details>
-  <summary>Server</summary>
-  <ul>
-    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
-    <li><a href="https://go.dev/">Golang</a></li>
-    <li><a href="https://nestjs.com/">Nest.js</a></li>
-    <li><a href="https://socket.io/">SocketIO</a></li>
-    <li><a href="https://www.prisma.io/">Prisma</a></li>    
-    <li><a href="https://www.apollographql.com/">Apollo</a></li>
-    <li><a href="https://graphql.org/">GraphQL</a></li>
-  </ul>
-</details>
-
-<details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://www.mysql.com/">MySQL</a></li>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
-    <li><a href="https://redis.io/">Redis</a></li>
-    <li><a href="https://neo4j.com/">Neo4j</a></li>
-    <li><a href="https://www.mongodb.com/">MongoDB</a></li>
-  </ul>
-</details>
-
-<details>
-<summary>DevOps</summary>
-  <ul>
-    <li><a href="https://www.docker.com/">Docker</a></li>
-    <li><a href="https://www.jenkins.io/">Jenkins</a></li>
-    <li><a href="https://circleci.com/">CircleCLI</a></li>
-  </ul>
-</details>
-
-<!-- Features -->
 ### :dart: Features
 
-- Feature 1
-- Feature 2
-- Feature 3
+- Cross-compiled Linux v6.6 kernel targeting `aarch64`
+- Minimal BusyBox root filesystem with a custom `init` script
+- Boots to an interactive shell via QEMU `virt` machine
+- Optional device tree (DTB/DTS) extraction from QEMU
+- Fully reproducible — no distro-specific tooling beyond the listed dependencies
 
-<!-- Color Reference -->
-### :art: Color Reference
-
-| Color             | Hex                                                                |
-| ----------------- | ------------------------------------------------------------------ |
-| Primary Color | ![#222831](https://via.placeholder.com/10/222831?text=+) #222831 |
-| Secondary Color | ![#393E46](https://via.placeholder.com/10/393E46?text=+) #393E46 |
-| Accent Color | ![#00ADB5](https://via.placeholder.com/10/00ADB5?text=+) #00ADB5 |
-| Text Color | ![#EEEEEE](https://via.placeholder.com/10/EEEEEE?text=+) #EEEEEE |
-
-
-<!-- Env Variables -->
-### :key: Environment Variables
-
-To run this project, you will need to add the following environment variables to your .env file
-
-`API_KEY`
-
-`ANOTHER_API_KEY`
 
 <!-- Getting Started -->
-## 	:toolbox: Getting Started
+## :toolbox: Getting Started
 
-<!-- Prerequisites -->
 ### :bangbang: Prerequisites
 
-This project uses Yarn as package manager
+Install all required build tools and the QEMU AArch64 emulator:
 
 ```bash
- npm install --global yarn
-```
-
-<!-- Installation -->
-### :gear: Installation
-
-Install my-project with npm
-
-```bash
-  yarn install my-project
-  cd my-project
-```
-   
-<!-- Running Tests -->
-### :test_tube: Running Tests
-
-To run tests, run the following command
-
-```bash
-  yarn test test
-```
-
-<!-- Run Locally -->
-### :running: Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/Louis3797/awesome-readme-template.git
-```
-
-Go to the project directory
-
-```bash
-  cd my-project
-```
-
-Install dependencies
-
-```bash
-  yarn install
-```
-
-Start the server
-
-```bash
-  yarn start
-```
-
-
-<!-- Deployment -->
-### :triangular_flag_on_post: Deployment
-
-To deploy this project run
-
-```bash
-  yarn deploy
-```
-
-
-<!-- Usage -->
-## :eyes: Usage
-
-Use this space to tell a little more about your project and how it can be used. Show additional screenshots, code samples, demos or link to other resources.
-
-
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
-```
-
-<!-- Roadmap -->
-## :compass: Roadmap
-
-* [x] Todo 1
-* [ ] Todo 2
-
-
-<!-- Contributing -->
-## :wave: Contributing
-
-<a href="https://github.com/Louis3797/awesome-readme-template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Louis3797/awesome-readme-template" />
-</a>
-
-
-Contributions are always welcome!
-
-See `contributing.md` for ways to get started.
-
-
-<!-- Code of Conduct -->
-### :scroll: Code of Conduct
-
-Please read the [Code of Conduct](https://github.com/Louis3797/awesome-readme-template/blob/master/CODE_OF_CONDUCT.md)
-
-<!-- FAQ -->
-## :grey_question: FAQ
-
-- Question 1
-
-  + Answer 1
-
-- Question 2
-
-  + Answer 2
-
-
-<!-- License -->
-## :warning: License
-
-Distributed under the no License. See LICENSE.txt for more information.
-
-
-<!-- Contact -->
-## :handshake: Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-
-
-<!-- Acknowledgments -->
-## :gem: Acknowledgements
-
-Use this section to mention useful resources and libraries that you have used in your projects.
-
- - [Shields.io](https://shields.io/)
- - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [Emoji Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md#travel--places)
- - [Readme Template](https://github.com/othneildrew/Best-README-Template)
-
-
-## :handshake: Template Credit
-
-Source of this Template : [https://github.com/Louis3797/awesome-readme-template](https://github.com/Louis3797/awesome-readme-template)
-
-
-
-
-# ARM64 Kernel and BusyBox Build Script
-
-### 1. Install Dependencies
 sudo apt update -y && sudo apt install -y \
   zsh git gcc flex bison make ca-certificates curl \
   gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu \
@@ -317,48 +86,94 @@ sudo apt update -y && sudo apt install -y \
   qemu-user-static bc libssl-dev libncurses-dev \
   libncurses5-dev libncursesw5-dev bzip2 vim nano cpio \
   device-tree-compiler
+```
 
-### 2. Build Linux Kernel (v6.6)
+---
+
+### :gear: Build the Linux Kernel (v6.6)
+
+```bash
 git clone --depth 1 --branch v6.6 https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
 cd linux
 make ARCH=arm64 defconfig
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) Image dtbs
 cd ..
+```
 
-### 3. Build BusyBox (Root FS)
+---
+
+### :package: Build BusyBox (Root FS)
+
+```bash
 git clone --depth=1 https://git.busybox.net/busybox.git
 cd busybox
 make ARCH=arm64 defconfig
-# Note: You may want to set CONFIG_STATIC=y in .config for a standalone initramfs
+# Optional: set CONFIG_STATIC=y in .config for a standalone initramfs
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc)
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- install
+```
 
-### 4. Create Initramfs
+---
+
+### :wrench: Create Initramfs
+
+```bash
 cd _install
+
 cat > init <<'EOF'
 #!/bin/sh
 # Simple init: print a message, drop to a shell
-echo "Hello welcome to the linux kernel, this is initramfs!" > /dev/console
+echo "Hello, welcome to the Linux kernel — this is initramfs!" > /dev/console
 export PATH=/bin:/sbin:/usr/bin:/usr/sbin
-# Spawn an interactive shell
 exec /bin/sh
 EOF
 
 chmod +x init
 find . -print0 | cpio --null -ov --format=newc > ../../initramfs.cpio
 cd ../..
+```
 
-### 5. Run in QEMU
+---
+
+### :rocket: Run in QEMU
+
+```bash
 qemu-system-aarch64 \
- -machine virt \
- -cpu cortex-a57 \
- -nographic \
- -kernel linux/arch/arm64/boot/Image \
- -initrd initramfs.cpio
+  -machine virt \
+  -cpu cortex-a57 \
+  -nographic \
+  -kernel linux/arch/arm64/boot/Image \
+  -initrd initramfs.cpio
+```
 
-### 6. Extract Device Tree (Optional)
+You should see the boot log followed by the `initramfs` welcome message and an interactive shell.
+
+---
+
+### :deciduous_tree: Extract Device Tree (Optional)
+
+Dump and decompile the QEMU `virt` machine's device tree:
+
+```bash
 qemu-system-aarch64 -machine virt -machine dumpdtb=qemu.dtb
 dtc -I dtb qemu.dtb > qemu.dts
+```
 
 
+<!-- Contact -->
+## :handshake: Contact
 
+Kavya — [@kvsh2050](https://github.com/kvsh2050) — email@email_client.com
+
+Project Link: [https://github.com/kvsh2050/linux-kernel-scratch](https://github.com/kvsh2050/linux-kernel-scratch)
+
+
+<!-- Acknowledgements -->
+## :gem: Acknowledgements
+
+- [The Linux Kernel](https://www.kernel.org/)
+- [BusyBox](https://www.busybox.net/)
+- [QEMU](https://www.qemu.org/)
+- [Shields.io](https://shields.io/)
+- [Awesome README](https://github.com/matiassingers/awesome-readme)
+- [Readme Template](https://github.com/othneildrew/Best-README-Template)
