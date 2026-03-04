@@ -1,5 +1,4 @@
 <div align="center">
-  <img src="assets/logo.png" alt="logo" width="200" height="auto" />
   <h1>Linux Kernel Scratch</h1>
   
   <p>
